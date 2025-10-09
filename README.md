@@ -55,16 +55,43 @@ Each lesson includes:
 - 🧾 **Quiz & Reflection Questions**
 
 ### Modules
-1. Introduction — What is an Architect?  
-2. Architectural Thinking — Principles and Mindsets  
-3. Requirements & Stakeholders  
-4. Design Principles & Patterns  
-5. Data Design  
-6. Security & Compliance  
-7. Reliability & Resilience  
-8. Performance & Scalability  
-9. Cost & Operations  
-10. Diagrams, ADRs & Capstone Project  
+
+## 🎥 Think Like an Architect | Playlist
+
+### 🧠 Episode 0 - Intro Session | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/TB0KBhM5Ijo/hqdefault.jpg)](https://www.youtube.com/watch?v=TB0KBhM5Ijo) <br>
+🎯 **Duration:** 5 Minutes, 47 Seconds  
+📅 **Uploaded:** 2025-09-04  
+🔗 [Watch on YouTube](https://www.youtube.com/watch?v=TB0KBhM5Ijo)
+
+---
+
+### 🧩 Episode 1 - Who is a Solutions Architect? | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/fLnNDFr_yXk/hqdefault.jpg)](https://www.youtube.com/watch?v=fLnNDFr_yXk) <br>
+🎯 **Duration:** 13 Minutes, 13 Seconds  
+📅 **Uploaded:** 2025-08-19  
+🔗 [Watch on YouTube](https://www.youtube.com/watch?v=fLnNDFr_yXk)
+
+---
+
+### 🧩 Episode 2 - Architectural Thinking | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/8HiAJms7VnE/hqdefault.jpg)](https://www.youtube.com/watch?v=8HiAJms7VnE) <br>
+🎯 **Duration:** 27 Minutes, 30 Seconds  
+📅 **Uploaded:** 2025-08-24  
+🔗 [Watch on YouTube](https://www.youtube.com/watch?v=8HiAJms7VnE)
+
+---
+
+### 🧩 Episode 3 - Requirements Gathering | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/kXUvbVDZWSk/hqdefault.jpg)](https://www.youtube.com/watch?v=kXUvbVDZWSk) <br>
+🎯 **Duration:** 17 Minutes, 57 Seconds  
+📅 **Uploaded:** 2025-09-06  
+🔗 [Watch on YouTube](https://www.youtube.com/watch?v=kXUvbVDZWSk)
+
+---
+
+### 📜 Full Playlist
+
 
 ---
 
