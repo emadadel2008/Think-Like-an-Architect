@@ -1,2 +1,3 @@
-# Think-Like-an-Architect
-Think Like an Architect course 
+# Think Like an Architect — Course
+
+A provider-agnostic course to teach architectural thinking.
