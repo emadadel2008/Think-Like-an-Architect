@@ -83,13 +83,19 @@ Each lesson includes:
 ---
 
 ### 🧩 Episode 3 - Requirements Gathering | Arabic بالعربي
-[![Watch on YouTube](https://i.ytimg.com/vi/kXUvbVDZWSk/hqdefault.jpg)](https://www.youtube.com/watch?v=kXUvbVDZWSk) <br>
+[![Watch on YouTube](https://i.ytimg.com/vi/kfOLtsdY4Yo/hqdefault.jpg)](https://www.youtube.com/watch?v=kXUvbVDZWSk) <br>
 🎯 **Duration:** 17 Minutes, 57 Seconds  
 📅 **Uploaded:** 2025-09-06  
 🔗 [Watch on YouTube](https://www.youtube.com/watch?v=kXUvbVDZWSk)
 
 ---
+### 🧩 Episode 4 - Architecture Patterns, Templates & Diagrams | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/kfOLtsdY4Yo/hqdefault.jpg)](https://youtu.be/kfOLtsdY4Yo) <br>
+🎯 **Duration:** 30 Minutes, 57 Seconds  
+📅 **Uploaded:** 2025-11-04  
+🔗 [Watch on YouTube](https://youtu.be/kfOLtsdY4Yo)
 
+---
 ### 📜 Full Playlist
 
 
