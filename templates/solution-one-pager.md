@@ -1,1 +1,0 @@
-# Solution One Pager Template
