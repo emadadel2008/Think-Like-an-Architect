@@ -120,11 +120,13 @@ The course is delivered as a video playlist, with lesson PDFs and supporting doc
 - [Episode 6 — Security by Design](lessons/Episode%206%20-%20Security%20by%20Design.pdf)
 - [Episode 7 — Documentation & Architecture Artifacts](lessons/Episode%207%20-%20Documentation%20%26%20Architecture%20Artifacts.pdf)
 
-### 📄 Episode 4 Document Examples
+### 📄 Episode 4 Word Examples
 
-- [Business Requirements Document (BRD)](lessons/Episode%204%20-%20BRD_Document.docx)
-- [High-Level Design (HLD)](lessons/Episode%204%20-%20HLD_Document.docx)
-- [Low-Level Design (LLD)](lessons/Episode%204%20-%20LLD_Document.docx)
+These are completed examples for a cloud-based file-sharing portal, not blank templates. For new projects, use the reusable templates below. The Episode 4 HLD example's cover page is labeled "Low-Level Design (LLD)", although its contents describe a high-level design.
+
+- [Business Requirements Document (BRD)](templates/examples/Episode%204%20-%20BRD_Document.docx)
+- [High-Level Design (HLD)](templates/examples/Episode%204%20-%20HLD_Document.docx)
+- [Low-Level Design (LLD)](templates/examples/Episode%204%20-%20LLD_Document.docx)
 
 ### 📝 Reusable Architecture Templates
 
