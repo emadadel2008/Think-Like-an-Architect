@@ -1,131 +1,190 @@
 # Low-Level Design (LLD)
 
-> Specify enough detail for implementation, review, testing, and operations. Keep secrets and production credentials out of this document; reference the approved secret store instead.
+> **Purpose:** Provide an implementable, reviewable specification for a bounded component, service, interface, or change. Detail behavior, contracts, data, configuration, security, failure handling, deployment, and verification. Keep the cross-system architecture in the HLD.
+>
+> **How to use:** Scope this document to a component or coherent change; link the approved HLD, requirements, and ADRs. Use stable IDs and versioned contracts. Include only implementation details needed to build, test, secure, and operate the design. Never record credentials or secret values.
 
 ## Document Control
 
 | Field | Value |
 |---|---|
-| Project / component | [Name] |
-| Document owner | [Name / role] |
-| Version / status | [Version] / [Draft, In Review, Approved] |
-| Created / last updated | [Date] / [Date] |
-| Related HLD / requirements | [Links / IDs] |
+| System / component / change | [Name and tracking link] |
+| Component owner / engineering lead | [Team / name] |
+| Author / reviewers | [Names / roles] |
+| Version / status | [Version] / [Draft, In Review, Approved, Superseded] |
+| Created / last updated | [YYYY-MM-DD] / [YYYY-MM-DD] |
+| Classification | [Organizational label] |
+| Parent HLD / BRD / ADRs | [Links and IDs] |
 
-## 1. Purpose and Scope
+### Review and Approval
 
-- **Purpose:** [Component or implementation being specified]
-- **In scope:** [Detailed capabilities]
-- **Out of scope:** [Explicit exclusions]
-- **Dependencies:** [Other components, teams, or services]
-
-## 2. Component Design
-
-[Insert a component diagram. Describe each component, its interface, and responsibility.]
-
-| Component | Responsibility | Interface | Runtime / owner |
+| Reviewer | Perspective | Decision / conditions | Date |
 |---|---|---|---|
-| [Component] | [Purpose] | [API, event, or protocol] | [Runtime / team] |
+| [Name] | [Engineering / architecture / security / data / operations / test] | [Pending / Approved / Rejected] | [YYYY-MM-DD] |
 
-## 3. Detailed Flows
+## 1. Purpose, Scope, and Design Summary
 
-### [Use case / operation]
+- **Component responsibility:** [Single bounded responsibility.]
+- **In scope / out of scope:** [Explicitly state both.]
+- **Requirements addressed:** [BR- / QA- / security-control IDs.]
+- **Dependencies and owners:** [Services, libraries, platforms, teams.]
+- **Design summary:** [Implementation approach and important decisions.]
 
-1. [Trigger and validation]
-2. [Processing and dependencies]
-3. [Success response or resulting state]
-4. [Failure paths, retry behavior, and recovery]
+## 2. Component Structure and Behavior
 
-[Add sequence diagrams for complex interactions.]
+### 2.1 Component Diagram
 
-## 4. Interfaces and API Contracts
+[Insert a focused component diagram showing dependencies, boundaries, and interfaces.]
 
-| Operation | Method / protocol | Path / topic | Authentication | Description |
+### 2.2 Responsibilities and Dependencies
+
+| ID | Module / dependency | Responsibility | Interface / version | Owner / criticality |
 |---|---|---|---|---|
-| [Name] | [Method] | [Path] | [Mechanism] | [Purpose] |
+| CMP-001 | [Name] | [Responsibility] | [Interface / version] | [Owner / criticality] |
 
-### Request / Message
+### 2.3 Main Flows and State Transitions
+
+[Describe preconditions, normal path, alternate paths, invariants, and state transitions. Add a sequence diagram for complex or security-sensitive flows.]
+
+| Step | Actor / component | Input / action | Result / persisted state | Failure / compensation |
+|---|---|---|---|---|
+| 1 | [Actor] | [Action and validation] | [Result] | [Failure behavior] |
+
+## 3. Interface and Contract Specifications
+
+For each API, event, message, file exchange, or scheduled interface, define the contract and the ownership boundary.
+
+| Interface ID | Operation | Protocol / method | Endpoint / topic | Contract version / owner |
+|---|---|---|---|---|
+| API-001 | [Operation] | [HTTPS / REST / event / etc.] | [Path / topic] | [Version / owner] |
+
+### Request / Event Schema
 
 ```json
 {
-  "field": "[type and meaning]"
+  "requestId": "[string, required; correlation identifier]",
+  "exampleField": "[type, required/optional; constraints and meaning]"
 }
 ```
 
-### Response / Event
+### Response / Event Schema
 
 ```json
 {
-  "field": "[type and meaning]"
+  "requestId": "[string; correlation identifier]",
+  "result": "[type and meaning]"
 }
 ```
 
-- **Validation rules:** [Required fields, bounds, formats]
-- **Error behavior:** [Status / error codes and safe client messages]
-- **Versioning / compatibility:** [Contract evolution policy]
-- **Timeouts, retries, and idempotency:** [Rules]
+- **Validation and limits:** [Required fields, formats, size limits, allow-lists, boundary checks.]
+- **Authentication and authorization:** [Principal, scopes / roles, resource-level decisions.]
+- **Error contract:** [Stable error codes, safe messages, retryable vs. terminal classification.]
+- **Compatibility and versioning:** [Additive / breaking change policy and consumer migration.]
+- **Timeout, retry, and idempotency:** [Budgets, backoff, deduplication key, replay behavior.]
+- **Rate limiting / quotas:** [Limits, enforcement point, client behavior.]
+- **Example:** [Sanitized request / response / message or contract link.]
 
-## 5. Data Design
+## 4. Data Model and Persistence
 
-### Entities / Schema
+### 4.1 Entities and Schema
 
-| Entity / field | Type | Required | Constraints | Classification / notes |
+| Entity / field | Type / format | Required | Key / constraint | Classification / notes |
 |---|---|---|---|---|
-| [Name] | [Type] | [Yes / No] | [Rules] | [Notes] |
+| [Name] | [Type] | [Yes / No] | [PK / FK / unique / validation] | [Sensitivity / purpose] |
 
-- **Relationships and keys:** [Describe]
-- **Indexes / query patterns:** [Describe]
-- **Retention, archival, and deletion:** [Describe]
-- **Migration / compatibility:** [Describe]
+### 4.2 Data Behavior
 
-## 6. Infrastructure and Configuration
+- **Relationships and ownership:** [Source of truth, cardinality, write authority.]
+- **Transactions and consistency:** [Atomicity boundaries, isolation, consistency model.]
+- **Queries and indexes:** [Primary query patterns, indexes, expected cardinality.]
+- **Retention and deletion:** [TTL, archival, legal hold, deletion propagation.]
+- **Schema evolution / migration:** [Forward / backward compatibility, migration order, rollback.]
+- **Data protection:** [Encryption, keys, masking, backup, residency.]
 
-| Resource / setting | Purpose | Non-secret configuration | Environment differences |
-|---|---|---|---|
-| [Resource / key] | [Purpose] | [Value or reference] | [Differences] |
+## 5. Security and Privacy Controls
 
-- **Network / DNS / ports:** [Required paths and boundaries]
-- **Capacity / scaling:** [Limits, triggers, and sizing assumptions]
-- **Secrets:** [Secret-store references and rotation expectations only]
-
-## 7. Security Controls
-
-- **Identity and authorization:** [Principals, roles, least-privilege rules]
-- **Input and output handling:** [Validation, encoding, file / payload constraints]
-- **Encryption and key handling:** [In transit / at rest, key ownership]
-- **Audit events:** [Events, fields, retention, and access]
-- **Threats and mitigations:** [Link to threat model / review]
-
-## 8. Failure Handling and Resilience
-
-| Failure mode | Detection | Handling / retry | Recovery / alert |
-|---|---|---|---|
-| [Failure] | [Signal] | [Behavior] | [Action / owner] |
-
-## 9. Deployment and Operations
-
-- **Build / deployment dependencies:** [Pipeline, artifacts, prerequisites]
-- **Release, rollback, and migration steps:** [Procedure or linked runbook]
-- **Health checks:** [Readiness / liveness and expected behavior]
-- **Logs, metrics, and traces:** [Signals, dashboards, alert links]
-- **Operational owner and support tier:** [Team / contact path]
-
-## 10. Testing and Acceptance
-
-| Test level | Scenarios / criteria | Evidence location |
+| Control | Implementation detail | Verification / evidence |
 |---|---|---|
-| Unit | [Cases] | [Link] |
-| Integration | [Cases] | [Link] |
-| Security / performance | [Cases and thresholds] | [Link] |
+| Identity and least privilege | [Principals, roles, permissions, workload identity] | [Test / review] |
+| Input / output safety | [Validation, encoding, file / payload restrictions] | [Test] |
+| Secrets and keys | [Secret-store reference, access boundary, rotation] | [Review / alert] |
+| Sensitive data | [Classification, minimization, redaction, retention] | [Test / review] |
+| Audit | [Events, actor, outcome, correlation, retention, access] | [Test / evidence] |
 
-## 11. Open Items, References, and Change History
+- **Threat model / abuse cases:** [Link and applicable threats / mitigations.]
+- **Security dependencies / vulnerabilities:** [Approved versions, scanning, patch expectations.]
+- **Security exceptions:** [Approver, rationale, expiry, tracking link; N/A if none.]
 
-| Open item | Owner | Due date / status |
-|---|---|---|
-| [Decision or action] | [Name] | [Date / status] |
+## 6. Runtime, Infrastructure, and Configuration
 
-- [HLD, ADRs, API specification, data model, runbooks]
-
-| Version | Date | Author | Summary of change |
+| Resource / setting | Purpose | Safe value / secret reference | Environment / scaling behavior |
 |---|---|---|---|
-| 0.1 | [Date] | [Name] | Initial draft |
+| [Name] | [Purpose] | [Non-secret value or secret-store reference; never the secret] | [Difference / limit] |
+
+- **Runtime / platform:** [Language / runtime versions, OS or managed service assumptions.]
+- **Network / DNS / ports:** [Ingress, egress, protocol, allowed destinations, trust boundary.]
+- **Capacity and limits:** [Sizing assumptions, concurrency, connection pools, payload / storage limits.]
+- **Configuration validation:** [Required settings, startup checks, safe failure behavior.]
+- **Infrastructure as code:** [Module / repository / environment configuration link.]
+
+## 7. Resilience and Failure Handling
+
+| Failure / degraded dependency | Detection | Component behavior | Retry / timeout / fallback | Alert / recovery owner |
+|---|---|---|---|---|
+| [Failure mode] | [Signal] | [Fail safe / degrade] | [Bounded policy] | [Owner / action] |
+
+- **Idempotency / duplicate delivery:** [Behavior and retention of deduplication state.]
+- **Concurrency / ordering:** [Required guarantees and enforcement.]
+- **Circuit breaking / back-pressure:** [Thresholds, queue limits, load shedding.]
+- **Recovery / data reconciliation:** [Procedure and runbook link.]
+
+## 8. Observability and Operations
+
+- **Logs:** [Structured fields, correlation IDs, sensitive-data exclusions, retention.]
+- **Metrics:** [Service and business metrics, units, dimensions, thresholds.]
+- **Traces:** [Propagation and sampling.]
+- **Health checks:** [Liveness / readiness semantics and dependency treatment.]
+- **Dashboards and alerts:** [Links, SLO mapping, routing, actionable response.]
+- **Runbooks / ownership:** [Procedure links, escalation path, support tier.]
+
+## 9. Build, Deployment, and Rollback
+
+- **Build artifacts and provenance:** [Pipeline, artifact source, signing / scanning.]
+- **Deployment sequence:** [Prerequisites, dependencies, data / schema order.]
+- **Progressive rollout:** [Canary / feature flag / staged release and guard conditions.]
+- **Configuration and secret rollout:** [Safe update and rotation sequence.]
+- **Rollback / roll-forward:** [Decision criteria, steps, compatibility limits.]
+- **Post-deployment checks:** [Signals, smoke tests, observation window.]
+
+## 10. Test and Verification Plan
+
+| Test level / quality | Scenario and acceptance threshold | Automation / owner | Evidence |
+|---|---|---|---|
+| Unit / contract | [Behavior and measurable result] | [Pipeline / owner] | [Link] |
+| Integration / end-to-end | [Dependencies and scenario] | [Pipeline / owner] | [Link] |
+| Security / privacy | [Abuse case / control] | [Tool / reviewer] | [Link] |
+| Performance / resilience | [Load / failure and target] | [Test / owner] | [Link] |
+| Operational acceptance | [Alert, recovery, rollback verification] | [Exercise / owner] | [Link] |
+
+## 11. Requirement Traceability and Open Items
+
+| Requirement / ADR / HLD reference | Design section | Verification / evidence | Status |
+|---|---|---|---|
+| [ID / link] | [Section] | [Test / review] | [Planned / Verified] |
+
+| Open decision / risk | Owner | Needed by | Status / implementation impact |
+|---|---|---|---|
+| [Item] | [Role] | [Date] | [Status / impact] |
+
+## 12. References and Change History
+
+- [API schemas, data model, sequence diagrams, threat model, IaC, pipeline, runbooks.]
+
+| Version | Date | Author | Change | Review / approval reference |
+|---|---|---|---|---|
+| 0.1 | [YYYY-MM-DD] | [Name] | Initial draft | [Link / pending] |
+
+### Guidance
+
+- [arc42: Architecture documentation overview](https://arc42.org/overview)
+- [C4 model: Diagram types and levels of detail](https://c4model.com/diagrams)

@@ -1,123 +1,167 @@
 # High-Level Design (HLD)
 
-> Describe the solution at the level needed to align business, engineering, security, and operations stakeholders. Keep implementation details in the LLD. Mark non-applicable sections as **N/A** and link supporting artifacts.
+> **Purpose:** Communicate the solution's structure and important architectural decisions to business, engineering, security, and operations stakeholders. Explain system boundaries, major building blocks, relationships, and how key quality requirements shape the design. Keep component internals and implementation contracts in the LLD.
+>
+> **How to use:** Replace bracketed prompts and link detailed artifacts rather than duplicating them. Tailor diagrams to their audience; use a C4 context/container view where useful. Record important decisions and trade-offs, not just a list of technologies.
 
 ## Document Control
 
 | Field | Value |
 |---|---|
-| Project / solution | [Name] |
-| Document owner | [Name / role] |
-| Version / status | [Version] / [Draft, In Review, Approved] |
-| Created / last updated | [Date] / [Date] |
-| Reviewers / approvers | [Names and roles] |
+| System / initiative | [Name and tracking link] |
+| Business owner / product owner | [Name / role] |
+| Architecture owner | [Name / role] |
+| Authors / contributors | [Names / roles] |
+| Version / status | [Version] / [Draft, In Review, Approved, Superseded] |
+| Created / last updated | [YYYY-MM-DD] / [YYYY-MM-DD] |
+| Classification | [Organizational label] |
+| Related BRD / design / ADRs | [Links and IDs] |
 
-## 1. Executive Summary
+### Review and Approval
 
-[Summarize the proposed solution, the need it addresses, and its most important architectural characteristics.]
+| Reviewer | Perspective / role | Decision / conditions | Date |
+|---|---|---|---|
+| [Name] | [Business / architecture / security / operations / data] | [Pending / Approved / Rejected] | [YYYY-MM-DD] |
 
-## 2. Goals, Scope, and Context
+## 1. Executive Summary and Design Status
 
-- **Goals:** [Desired outcomes]
-- **In scope:** [Capabilities and systems covered]
-- **Out of scope:** [Explicit exclusions]
-- **Users and stakeholders:** [Primary users, owners, and external parties]
-- **Related requirements:** [BRD / requirement IDs and links]
+[Summarize the problem, proposed solution, important boundaries, major trade-offs, and decisions or approvals needed. State unresolved high-impact items.]
 
-## 3. Architecture Principles and Key Drivers
+## 2. Goals, Scope, and Requirements
 
-| Driver / principle | Design implication |
-|---|---|
-| [Business or technical driver] | [How it shapes the design] |
+- **Business outcomes:** [Link to BRD outcome IDs.]
+- **In scope:** [Capabilities, workloads, interfaces, and environments.]
+- **Out of scope:** [Explicit exclusions.]
+- **Users and stakeholders:** [Primary users, owners, operators, and external parties.]
+- **Requirements baseline:** [Approved BRD / requirement IDs and version.]
 
-## 4. System Context
+## 3. Drivers, Principles, Constraints, and Assumptions
 
-[Insert a context diagram showing users, the solution boundary, and external systems. Use a Mermaid diagram, image, or link.]
+| ID | Driver / principle / constraint / assumption | Architectural impact | Owner / validation |
+|---|---|---|---|
+| DA-001 | [Requirement, principle, mandated constraint, or unverified assumption] | [Impact on design / consequence] | [Owner / date] |
+
+## 4. System Context and Boundaries
+
+Show the system in its environment: people and external systems, ownership, trust boundaries, and principal interactions. Keep diagrams focused on the question they answer.
 
 ```mermaid
 flowchart LR
-    User[User or actor] --> Solution[Solution boundary]
-    Solution --> External[External system]
+    Person[User or actor] --> System[System of interest]
+    System --> Dependency[External system]
 ```
 
-## 5. Proposed Architecture
+[Replace this example with the actual context diagram. Label system boundaries and external interfaces.]
 
-### Logical Architecture
+## 5. Architecture Overview
 
-[Insert a component / container diagram and explain the main boundaries.]
+### 5.1 Logical Structure
 
-### Components and Responsibilities
+[Insert a C4 container or equivalent logical view. Show major deployable applications, data stores, and communication relationships; link deeper component diagrams if needed.]
 
-| Component | Responsibility | Owner / boundary | Key dependencies |
-|---|---|---|---|
-| [Component] | [Purpose] | [Team / trust boundary] | [Dependencies] |
+### 5.2 Building Blocks and Responsibilities
 
-### Key Interactions and Data Flows
-
-| Flow | Initiator | Main steps | Data exchanged | Failure considerations |
+| ID | Building block | Responsibility | Ownership / trust boundary | Key dependencies |
 |---|---|---|---|---|
-| [Flow] | [Actor / component] | [Summary] | [Data classification] | [Timeout / retry / fallback] |
+| BB-01 | [Name] | [Single clear responsibility] | [Owner / boundary] | [Other blocks / systems] |
 
-## 6. Deployment and Environment View
+### 5.3 Principal Interactions and Data Flows
 
-[Show environments, major deployment units, network or trust boundaries, and external connectivity. Link the detailed deployment view if separate.]
+| Flow ID | Initiator and purpose | Protocol / direction | Data classification | Failure behavior / owner |
+|---|---|---|---|---|
+| FLOW-01 | [Actor and business purpose] | [Protocol / direction] | [Classification] | [Timeout, retry, fallback, alert owner] |
 
-## 7. Data and Integration Overview
+## 6. Deployment, Environments, and Network
 
-- **Data domains and ownership:** [Summary]
-- **Classification / residency / retention:** [Summary]
-- **Integrations and protocols:** [Systems, direction, and protocol]
-- **Data lifecycle:** [Creation, use, archival, and deletion]
+[Show major deployment units and environments, regions / zones, connectivity, network and trust boundaries, and managed vs. customer responsibilities. Link detailed deployment diagrams or infrastructure definitions.]
+
+| Environment | Purpose | Data / access restrictions | Promotion / configuration approach |
+|---|---|---|---|
+| [Name] | [Purpose] | [Restrictions] | [Approach] |
+
+## 7. Data Architecture and Integrations
+
+- **Data domains and ownership:** [Source of truth, system of record, stewardship.]
+- **Classification and sensitivity:** [Classification, regulated / personal data, residency constraints.]
+- **Lifecycle:** [Collection, purpose, storage, retention, archival, deletion.]
+- **Integration contracts:** [Systems, interface owners, protocol, versioning, availability dependency.]
+- **Data consistency and movement:** [Consistency model, replication, asynchronous flows.]
+
+| Data set / interface | Owner / source | Classification | Lifecycle / contract |
+|---|---|---|---|
+| [Name] | [Owner] | [Class] | [Retention / interface link] |
 
 ## 8. Quality Attributes and Non-Functional Requirements
 
-| Attribute | Requirement / target | Architectural approach | Verification |
-|---|---|---|---|
-| Availability | [SLO / target] | [Approach] | [Test / measurement] |
-| Performance | [Latency / throughput target] | [Approach] | [Test / measurement] |
-| Scalability | [Load / growth target] | [Approach] | [Test / measurement] |
-| Recoverability | [RTO / RPO] | [Approach] | [Exercise / test] |
-| Accessibility / usability | [Applicable target] | [Approach] | [Verification] |
+Prioritize the few attributes that materially drive architecture. Define measurable usage or change scenarios; do not treat labels such as "scalable" as acceptance criteria.
+
+| ID | Priority / quality | Context and stimulus | Required response / target | Design response | Verification |
+|---|---|---|---|---|---|
+| QA-001 | [Priority / reliability, security, performance, etc.] | [Load, failure, actor, environment] | [Measurable threshold / SLO] | [Architectural mechanism] | [Test / telemetry / owner] |
 
 ## 9. Security, Privacy, and Compliance
 
-- **Identity and access:** [Authentication, authorization, privileged access]
-- **Trust boundaries and threat considerations:** [Key threats and mitigations]
-- **Data protection:** [Encryption, secrets, classification, retention]
-- **Audit and compliance:** [Required controls, evidence, and policies]
-- **Security review / open actions:** [Links and owners]
+- **Identity and access:** [Identity providers, authorization boundaries, privileged access.]
+- **Threat model:** [Threat model link, trust boundaries, principal risks and mitigations.]
+- **Data protection:** [Classification, encryption, key ownership, secret management, retention.]
+- **Secure delivery:** [Supply chain, vulnerability management, deployment controls.]
+- **Audit and compliance:** [Applicable policies / regulations, evidence, control owners.]
+- **Security decisions / exceptions:** [Decision, approver, expiry, and tracking link.]
 
-## 10. Resilience and Disaster Recovery
+## 10. Reliability, Continuity, and Recovery
 
-[Summarize failure domains, redundancy, backup / restore approach, recovery objectives, and dependencies.]
+| Critical capability | Availability target / SLO | RTO | RPO | Failure domains / recovery approach | Evidence / owner |
+|---|---|---|---|---|---|
+| [Capability] | [Target and measurement window] | [Time] | [Time] | [Strategy] | [Exercise / owner] |
+
+[Describe dependencies, graceful degradation, backup and restore responsibilities, continuity assumptions, and recovery-test cadence.]
 
 ## 11. Operations and Observability
 
-- **Monitoring and alerting:** [Key signals, alert ownership, and escalation]
-- **Logging / tracing:** [Coverage, access, retention, sensitive-data handling]
-- **Support model:** [Service owner, support hours, handoffs]
-- **Runbooks:** [Links to operational procedures]
+- **Service ownership and support:** [Owning team, support coverage, escalation path.]
+- **Golden signals / SLOs:** [Availability, latency, traffic, errors, saturation; link dashboards.]
+- **Logs, metrics, traces, and audit:** [Coverage, correlation, access, redaction, and retention.]
+- **Alerting:** [Actionable conditions, routing, severity, and responder.]
+- **Operational procedures:** [Incident, deployment, rollback, recovery runbook links.]
+- **Operational readiness:** [Readiness review, service acceptance, known limitations.]
 
-## 12. Decisions, Alternatives, and Trade-Offs
+## 12. Architecture Decisions and Alternatives
 
-| Decision | Chosen approach | Alternatives considered | Rationale / trade-off | ADR |
+List material decisions here and link a separate ADR for each decision that warrants its own rationale and lifecycle.
+
+| ID / ADR | Decision and status | Chosen option | Alternatives | Rationale, consequences, and trade-offs |
 |---|---|---|---|---|
-| [Topic] | [Choice] | [Options] | [Reasoning] | [Link] |
+| ADR-001 | [Topic / proposed, accepted, superseded] | [Choice] | [Options considered] | [Benefits, costs, risks, and constraints] |
 
-## 13. Cost, Risks, and Open Questions
+## 13. Cost, Risks, and Technical Debt
 
-- **Cost drivers / estimate:** [Major cost factors and assumptions]
-- **Risks and mitigations:** [Risk, impact, owner, action]
-- **Open questions:** [Question, decision owner, due date]
+| ID | Cost driver / risk / debt | Impact and likelihood | Mitigation / estimate basis | Owner / due date |
+|---|---|---|---|---|
+| RISK-001 | [Description] | [Impact / likelihood] | [Response / assumptions] | [Owner / date] |
 
-## 14. Delivery and Acceptance
+## 14. Migration, Delivery, and Architecture Validation
 
-[Summarize rollout / migration approach, key milestones, and architecture acceptance criteria.]
+- **Transition / migration:** [Phases, coexistence, data migration, cutover, rollback.]
+- **Deployment strategy:** [Release model, progressive delivery, environment promotion.]
+- **Architecture acceptance criteria:** [Requirements, quality scenarios, control evidence, and owners.]
+- **Validation plan:** [Prototype, threat review, performance / failure tests, production-readiness review.]
 
-## 15. References and Change History
+## 15. Open Questions and Follow-Up
 
-- [BRD, LLD, ADRs, diagrams, threat model, standards]
+| ID | Question / action | Decision owner | Due date | Status / impact if unresolved |
+|---|---|---|---|---|
+| OPEN-001 | [Question or action] | [Role] | [Date] | [Status / impact] |
 
-| Version | Date | Author | Summary of change |
-|---|---|---|---|
-| 0.1 | [Date] | [Name] | Initial draft |
+## 16. References and Change History
+
+- [BRD, LLD, ADRs, data / sequence / deployment diagrams, threat model, service objectives.]
+
+| Version | Date | Author | Change | Review / approval reference |
+|---|---|---|---|---|
+| 0.1 | [YYYY-MM-DD] | [Name] | Initial draft | [Link / pending] |
+
+### Guidance
+
+- [arc42: Architecture documentation overview](https://arc42.org/overview)
+- [C4 model: Diagram types and levels of detail](https://c4model.com/diagrams)
+- [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/)
