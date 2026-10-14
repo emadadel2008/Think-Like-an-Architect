@@ -83,7 +83,7 @@ Each lesson includes:
 ---
 
 ### 🧩 Episode 3 - Requirements Gathering | Arabic بالعربي
-[![Watch on YouTube](https://i.ytimg.com/vi/kfOLtsdY4Yo/hqdefault.jpg)](https://www.youtube.com/watch?v=kXUvbVDZWSk) <br>
+[![Watch on YouTube](https://i.ytimg.com/vi/kXUvbVDZWSk/hqdefault.jpg)](https://www.youtube.com/watch?v=kXUvbVDZWSk) <br>
 🎯 **Duration:** 17 Minutes, 57 Seconds  
 📅 **Uploaded:** 2025-09-06  
 🔗 [Watch on YouTube](https://www.youtube.com/watch?v=kXUvbVDZWSk)
@@ -96,6 +96,25 @@ Each lesson includes:
 🔗 [Watch on YouTube](https://youtu.be/kfOLtsdY4Yo)
 
 ---
+
+### 🧩 Episode 5 - How Solutions Architects Think About Data | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/ETYEAtmnCV4/hqdefault.jpg)](https://youtu.be/ETYEAtmnCV4) <br>
+🔗 [Watch on YouTube](https://youtu.be/ETYEAtmnCV4)
+
+---
+
+### 🧩 Episode 6 - Security by Design | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/b2mOXxaGCag/hqdefault.jpg)](https://youtu.be/b2mOXxaGCag) <br>
+🔗 [Watch on YouTube](https://youtu.be/b2mOXxaGCag)
+
+---
+
+### 🧩 Episode 7 - Documentation & Architecture Artifacts | Arabic بالعربي
+[![Watch on YouTube](https://i.ytimg.com/vi/II0gJWTPyUA/hqdefault.jpg)](https://youtu.be/II0gJWTPyUA) <br>
+🔗 [Watch on YouTube](https://youtu.be/II0gJWTPyUA)
+
+---
+
 ### 📜 Full Playlist
 
 
@@ -103,3 +122,15 @@ Each lesson includes:
 
 ## 🧰 Repository Contents
 
+### 📚 Episode Materials
+
+- [Episode 5 — How Solutions Architects Think About Data](lessons/Episode%205%20-%20How%20Solutions%20Architects%20Think%20About%20Data.pdf)
+- [Episode 6 — Security by Design](lessons/Episode%206%20-%20Security%20by%20Design.pdf)
+- [Episode 7 — Documentation & Architecture Artifacts](lessons/Episode%207%20-%20Documentation%20%26%20Architecture%20Artifacts.pdf)
+
+### 📝 Architecture Document Templates
+
+- [Business Requirements Document (BRD)](templates/BRD-template.md)
+- [High-Level Design (HLD)](templates/HLD-template.md)
+- [Low-Level Design (LLD)](templates/LLD-template.md)
+- [Operations Runbook](templates/Runbook-template.md)
